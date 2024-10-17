@@ -1,0 +1,87 @@
+/* Estilo básico para el footer */
+footer {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 5px 5px; /* Espaciado */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Adaptable para pantallas pequeñas */
+    font-family: 'Arial', sans-serif;
+  
+  }
+  
+  footer .footer-section {
+    margin-bottom: 10px;
+    width: 30%; /* Anchura ajustada para organizar las secciones en columnas */
+   
+    
+  }
+  
+  footer .footer-section ul {
+    list-style: none; /* Quita los puntos de las listas */
+    padding: 0;
+  }
+  
+  footer .footer-section ul li {
+    margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+  }
+  
+  footer .footer-section ul li a {
+    color: #bbb; /* Color de los enlaces */
+    text-decoration: none; /* Quita el subrayado */
+    transition: color 0.3s ease; /* Efecto suave al pasar el cursor */
+  }
+  
+  footer .footer-section ul li a:hover {
+    color: #fff; /* Color blanco al pasar el ratón */
+  }
+  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  /* Estilo para dispositivos móviles */
+  @media screen and (max-width: 768px) {
+    footer .footer-section {
+      width: 100%;    /* Ancho completo en pantallas pequeñas */
+      text-align: center;
+    }
+  }
+  
+  /* Estilo para las redes sociales */
+  footer .footer-section ul li a i {
+    margin-right: 8px;
+    font-size: 16px; /* Tamaño del icono si usas Font Awesome o similar */
+  }

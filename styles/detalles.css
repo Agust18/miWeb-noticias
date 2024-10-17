@@ -1,0 +1,54 @@
+body{
+    background-color: #2c3e50;
+    margin:0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el padding por defecto del body */
+    font-family: Arial, sans-serif; /* Establece la fuente del documento */
+}
+
+.contedor{
+    display: flex; /* Utilizamos Flexbox para alinear los divs horizontalmente */
+    justify-content: space-between; /* Distribuye espacio entre los divs, uno a cada lado */
+}
+
+
+.titulo,.imagen,.texto{
+    flex: 1; /* los divs ocuparán el mismo ancho en el contenedor */
+    background-color: #f0f0f0; /* Color de fondo para hacer más visible el div */
+    margin: 0 10px; /* Agregamos un margen de 10px a los lados, entre los divs */
+    padding: 20px; /* Espaciado interno para el contenido de los divs */
+    border: 1px solid #ccc; /* Borde para hacer más claro el límite de cada div */
+    text-align: center; /* Centramos el texto y las imágenes dentro de los divs */
+}
+
+.titulod {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333; 
+    text-transform: uppercase;
+}
+
+.imagen{
+    max-width: auto; /*Ancho del div */
+    max-height: auto; /* Alto del div*/
+    border-radius: 10px;
+}
+
+.imagen img {
+    
+    width: 25%; /* La imagen se ajusta al 100% del ancho del div */
+    height: 50%; /* La altura se ajusta automáticamente */
+    border-radius: 10px; /*bordes redondeados*/
+}
+
+.relacionadas{
+    text-align: center;
+    font-size: 50px;
+    text-transform: capitalize;
+    color:white;
+}
+
+/* .texto{
+    border-radius: px;
+} */
+
+

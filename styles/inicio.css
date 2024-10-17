@@ -1,0 +1,108 @@
+
+body {
+    margin:0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el padding por defecto del body */
+    font-family: Arial, sans-serif; /* Establece la fuente del documento */
+    background-color: #2c3e50;
+    
+}
+
+
+
+/* El contenedor principal que contiene ambos divs hijos */
+.contenedor,.contenedor2,.contenedor3 {
+    display: flex; /* Utilizamos Flexbox para alinear los divs horizontalmente */
+    justify-content: space-between; /* Distribuye espacio entre los divs, uno a cada lado */
+   
+}
+
+/* Estilos comunes para los divs "titulo1" y "titulo2" */
+.titulo1, .titulo2 , .titulo3,.titulo4,.titulo5,.titulo6,.titulo7,.titulo8,.titulo9{
+    flex: 1; /* los divs ocuparán el mismo ancho en el contenedor */
+    background-color: #f0f0f0; /* Color de fondo para hacer más visible el div */
+    margin: 0 10px; /* Agregamos un margen de 10px a los lados, entre los divs */
+    padding: 20px; /* Espaciado interno para el contenido de los divs */
+    border: 1px solid #ccc; /* Borde para hacer más claro el límite de cada div */
+    text-align: center; /* Centramos el texto y las imágenes dentro de los divs */
+    display: flex;
+    flex-direction: column; /* coloca los items en verticalmente u horizontal    */
+    justify-content: center; /* centra los item dependiento si es row o columnt  */
+    align-items: center; /* alinea verticalmente  */
+    
+}
+
+/* Estilo para las imágenes dentro de los divs */
+img {
+    max-width: 100px; /* Limitamos el ancho máximo de la imagen para que no sea demasiado grande */
+}
+
+/*
+display: grid; organiza los divs en una cuadrícula.
+grid-template-columns: 1fr 1fr; crea dos columnas de igual ancho, asegurando que ambos div tengan el mismo tamaño.
+gap: 10px; crea un espacio entre los divs para que no estén pegados.
+*/
+
+a {
+    margin-right: 15px;
+    margin-top: 10px; /* Agregamos espacio entre la imagen y el enlace */
+    text-decoration: none; /* Quitamos el subrayado del enlace */
+    color: blue; /* Cambiamos el color del texto del enlace */
+    font-weight: bold; /* Hacemos el texto del enlace más grueso */
+    
+
+}
+
+
+
+
+
+/* Estilo para las imágenes dentro de los divs */
+img {
+    max-width: 300px; /* Limitamos el ancho máximo de la imagen para que no sea demasiado grande */
+}
+
+.categoria {
+    margin: 10px;
+    font-family: Arial, sans-serif;
+}
+
+label {
+    font-size: 20px;
+    color:#fff;
+}
+
+.form-select {
+    width: 20%;
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 14px;
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+

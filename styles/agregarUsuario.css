@@ -1,0 +1,76 @@
+body {
+    margin:0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el padding por defecto del body */
+    font-family: Arial, sans-serif; /* Establece la fuente del documento */
+    background-color: #2c3e50;
+    
+}
+
+.p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.p p {
+    color: #4CAF50; /* Verde */
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.form-agg-user {
+    width: 40%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #f44336; /* Botón rojo */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #d32f2f; /* Rojo más oscuro para el hover */
+}
+
+.volver-inicio {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.volver-inicio a {
+    color: #4CAF50; /* Verde para el enlace */
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.volver-inicio a:hover {
+    text-decoration: underline;
+}

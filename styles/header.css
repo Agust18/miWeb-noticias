@@ -1,0 +1,53 @@
+
+header h1,h2 {   
+    font-family: 'Georgia', serif;        /* Fuente serif  */
+    font-size: 48px;                      /* Tamaño de letra grande */
+    color: beige;                       /* Color claro para contraste */
+    text-align: center;                   /* Centra el título */
+    letter-spacing: 2px;                  /* Aumenta el espaciado entre letras */
+    margin: 20px 0;                       /* Añade margen superior e inferior */
+    padding-bottom: 10px;                 /* Espaciado en la parte inferior del título */
+    border-bottom: 3px solid black;     /* Línea inferior en color negro para separar el título */
+    
+    
+   
+}
+
+
+
+
+.nav-links {
+    background-color: #333; /* Color de fondo oscuro para la barra de navegación */
+    padding: 1rem; /* Espaciado interior de 1 rem para dar espacio en la barra */
+}
+
+/* Estilo de la lista no ordenada */
+.nav-links ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: flex; /* Usa flexbox para alinear los elementos en fila */
+    justify-content: space-around; /* Distribuye los elementos uniformemente */
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+}
+
+/* Estilo de los elementos de la lista */
+.nav-links li {
+    margin: 0; /* Elimina el margen en los elementos de la lista */
+}
+
+/* Estilo de los enlaces */
+.nav-links a {
+    color: white; /* Color del texto blanco */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+
+}
+
+a {
+    margin-right: 15px;
+    margin-top: 10px; /* Agregamos espacio entre la imagen y el enlace */
+    text-decoration: none; /* Quitamos el subrayado del enlace */
+    color: blue; /* Cambiamos el color del texto del enlace */
+    font-weight: bold; /* Hacemos el texto del enlace más grueso */
+    
+
+}

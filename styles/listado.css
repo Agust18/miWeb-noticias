@@ -1,0 +1,113 @@
+body {
+    margin:0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el padding por defecto del body */
+    font-family: Arial, sans-serif; /* Establece la fuente del documento */
+    background-color: #2c3e50;
+    
+}
+
+/* Estilo del contenedor */
+.listadosub {
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Estilo del título */
+.listadosub h2 {
+    color: #f0f0f0; /* Texto oscuro */
+    font-size: 24px; /* Tamaño de fuente */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    letter-spacing: 2px; /* Espacio entre letras */
+    font-weight: bold; /* Negrita */
+}
+
+/* Contenedor de la tabla */
+.table {
+    width: 100%; /* Ancho completo */
+    margin: 20px auto; /* Centramos y añadimos espacio */
+    overflow-x: auto; /* Scroll horizontal si es necesario */
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%; /* Ocupa todo el ancho */
+    border-collapse: collapse; /* Sin espacio entre celdas */
+    background-color: #f9f9f9; /* Fondo claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Encabezado de la tabla */
+thead th {
+    background-color: #4CAF50; /* Fondo verde */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Espaciado */
+    text-align: left; /* Alineación a la izquierda */
+    font-weight: bold; /* Texto en negrita */
+    
+}
+
+/* Filas del cuerpo de la tabla */
+tbody tr {
+    border-bottom: 1px solid #ddd; /* Borde entre filas */
+}
+
+tbody td {
+    padding: 10px; /* Espaciado */
+    color: #333; /* Texto oscuro */
+}
+
+/* Enlaces y botones */
+tbody td a {
+    color: #4CAF50; /* Color verde para "Editar" */
+    text-decoration: none; /* Sin subrayado */
+    margin-right: 10px; /* Espacio a la derecha */
+    
+}
+
+tbody td form input[type="submit"] {
+    background-color: #f44336; /* Fondo rojo para "Eliminar" */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    padding: 8px 16px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de mano */
+   
+   
+}
+
+/* Alternar color de filas */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fondo gris claro en filas pares */
+}
+
+/* Contenedor del formulario */
+.listadoformulario {
+    text-align: center; /* Centrar el contenido */
+    margin-top: 20px; /* Espacio en la parte superior */
+}
+
+/* Estilos del formulario */
+.listadoformulario form {
+    display: inline-block; /* Hace que el formulario ocupe solo el espacio necesario */
+}
+
+/* Botón de cerrar sesión */
+.listadoformulario input[type="submit"] {
+    background-color: #f44336; /* Fondo rojo (para resaltar el botón de cerrar) */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    padding: 12px 24px; /* Espaciado interno amplio */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita para el texto */
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+    margin-top: 120px;
+    
+
+}
+
+/* Cambiar color cuando se pasa el mouse */
+.listadoformulario input[type="submit"]:hover {
+    background-color: #d32f2f; /* Fondo rojo más oscuro al pasar el mouse */
+
+}

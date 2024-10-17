@@ -1,0 +1,92 @@
+body{
+/* display: flex; */
+/* justify-content: center; */
+
+margin:0; /* Elimina el margen por defecto del body */
+padding: 0; /* Elimina el padding por defecto del body */
+font-family: Arial, sans-serif; /* Establece la fuente del documento */
+background-color: #2c3e50;
+}
+
+/* Contenedor principal para centrar el formulario */
+.login-container {
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    max-width: 100px; /* Máximo ancho del formulario */
+    padding: 40px; /* Espaciado interno (padding) */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    
+   
+}
+
+/* Estilos del título de la sección */
+.loginsub h2 {
+    color: #f0f0f0; /* Color de texto oscuro */
+    margin-bottom: 100px; /* Espacio debajo del título */
+    font-size: 24px; /* Tamaño de fuente */
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* Estilos del formulario */
+.loginform form {
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Colocar los elementos en columna */
+    place-items: center;
+    
+}
+
+
+/* Estilos de los campos de entrada */
+.loginform input[type="email"],
+.loginform input[type="password"] {
+    width: 50%; /* Ancho completo del contenedor */
+    padding: 15px; /* Espaciado interno (padding) */
+    margin-bottom: 100px; /* Espacio debajo de cada campo */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    margin-top: 100px;
+    
+  
+   
+}
+
+/* Estilos del botón de envío */
+.loginform input[type="submit"] {
+    padding: 22px; /* Espaciado interno (padding) */
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Texto blanco */
+    border: none; /* Eliminar el borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Mostrar el cursor como una mano al pasar el mouse */
+    width: 30%;
+    margin-bottom: 70px;
+    margin-top: 70px;
+}
+
+/* Cambiar el color del botón cuando el mouse pasa por encima */
+.loginform input[type="submit"]:hover {
+    background-color: #45a049; /* Fondo verde más oscuro al pasar el mouse */
+}
+
+.link-registro{
+    text-align: center;
+}
+
+.link-registro a {
+   
+    color: #f0f0f0; /* Color verde para el enlace */
+    font-weight: bold; /* Texto en negrita */
+  
+    
+}
+
+/* Cambiar el estilo del enlace cuando se pasa el mouse */
+.link-registro a:hover {
+    color: #388e3c; /* Color verde más oscuro al pasar el mouse */
+    text-decoration: underline; /* Subrayar el texto al pasar el mouse */
+}
