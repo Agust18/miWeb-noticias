@@ -5,6 +5,57 @@ error_reporting(E_ALL);
  require_once("../db/db.php");
 ?>
 <?php
+$id= isset($_GET["id"]) ? $_GET["id"] : 0 ; 
+
+$sql = ("SELECT * FROM NOTICIAS where id = ?");
+$stmt = $conx->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$resultado = $stmt->get_result();
+$resultadoFinal = [];
+while ($fila = $resultado->fetch_object()){
+    $FinalResultado[] = $fila; 
+
+    
+}
+$stmt->close();
+
+// Consulta para obtener la noticia principal
+$sql = "SELECT * FROM NOTICIAS WHERE id = ?";
+$stmt = $conx->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$resultado = $stmt->get_result();
+$noticiaPrincipal = $resultado->fetch_object(); // Obtén la noticia principal
+
+// Verifica si se encontró la noticia principal
+if (!$noticiaPrincipal) {
+    echo "<p>La noticia no existe o no se ha encontrado.</p>";
+    exit;
+}
+
+$stmt->close();
+
+// Obtener el ID de la categoría de la noticia principal
+$id_categoria = $noticiaPrincipal->id_categoria;  // Ajustamos a "id_categoria"
+
+// Consulta para obtener las noticias relacionadas, que sean de la misma categoría, excluyendo la noticia principal
+$sqlRelacionadas = "SELECT * FROM NOTICIAS WHERE id_categoria = ? AND id != ? LIMIT 6";
+$stmtRelacionadas = $conx->prepare($sqlRelacionadas);
+$stmtRelacionadas->bind_param("ii", $id_categoria, $id);
+$stmtRelacionadas->execute();
+$resultadoRelacionadas = $stmtRelacionadas->get_result();
+
+// Guardar las noticias relacionadas en un array
+$noticiasRelacionadas = [];
+while ($fila = $resultadoRelacionadas->fetch_object()) {
+    $noticiasRelacionadas[] = $fila;
+}
+
+$stmtRelacionadas->close();
+
+
+
 
 
 
@@ -21,12 +72,12 @@ error_reporting(E_ALL);
 </head>
 <body>
     <header>
-        <h2>what happens?</h2>
+        <h2>ENTERATE!</h2>
         <div>
         <nav class="nav-links">
                 <ul>
                     <li><a href="inicio.php">Inicio</a></li>
-                    <li><a href="categorias.php">Categoria</a></li>
+                    
                     <li><a href="../privadas/agregarNoticia.php">Agregar Noticia</a></li>
                     
                 </ul> 
@@ -34,55 +85,40 @@ error_reporting(E_ALL);
         </div>
     </header>
     <div class="contenedor">
-        <div class="titulo">
-            <h2 class="titulod">aca iria el titulo</h2>  
-        </div> 
-        <div class="imagen">
-            <img src="">
-        </div>
-        <div class="texto">
-            <p> Una noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-                aUna noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo 
-                y difundido a través de los diversos medios de comunicación social.
-                Es la narración de los acontecimientos
-
-            </p>
-        </div>
+            <?php foreach ($FinalResultado as $noticia) { ?>
+                <div class="titulo">
+                    <h3 class="titulod"><?php echo $noticia->titulo; ?></h3>
+                    <img src="<?php echo $noticia->imagen?>">
+                    <p><?php echo $noticia->descripcion ?></p>
+                    <p><?php echo $noticia->texto ?></p>
+                </div>
+            <?php
+        } ?>
+    </div>
+    
     <div class="relacionadas">
-        <p>NOTICIAS RELACIONADAS</p>
-    </div>
-    <footer>
-        <div>
-
+        <p class="p-body">NOTICIAS RELACIONADAS</p>
+        <div class="galeria-relacionadas">
+            <?php foreach ($noticiasRelacionadas as $noticia) { ?>
+                <div class="noticia-relacionada">
+                    <div class="titulo">
+                        <h5><?php echo $noticia->titulo; ?></h5> <!-- Título de la noticia relacionada -->
+                    </div>
+                    <div class="img-relacion">
+                        <img src="<?php echo $noticia->imagen; ?>" alt="Imagen de noticia relacionada"> <!-- Imagen de la noticia relacionada -->
+                        
+                    </div>
+                    <a href="detalles.php?id=<?php echo $noticia->id; ?>">Ver mas</a> <!-- Enlace a los detalles de la noticia relacionada -->
+                    
+                    
+                   
+                   
+                </div>
+            <?php } ?>
         </div>
-    </footer>
     </div>
+   
+
 
    
     

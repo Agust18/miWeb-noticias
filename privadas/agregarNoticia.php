@@ -55,7 +55,7 @@ $stmt->close();
     <nav class="nav-links">
             <ul>
                 <li><a href="../publicas/inicio.php">Inicio</a></li>
-                <li><a href="../publicas/categorias.php">Categorias</a></li>
+               
                 <li><a href="agregarNoticia.php">Agregar noticia</a></li>
                 <?php
                 if (isset($_SESSION["id"])|| !empty($_SESSION["id"])){ ?>
@@ -81,11 +81,19 @@ $stmt->close();
             </div>
             <input type="hidden" value="1" name="hidden">
 
-            <textarea name="texto" placeholder="texto" rows="7" id=""></textarea>
+            <div class="descripcion">
+                <p>Descripcion de noticia</p>
+                <textarea 
+                type="text" rows="60"  name="descripcion" placeholder="Description" >
+                </textarea>
+
+            </div>
+
+            <textarea name="texto" placeholder="texto" rows="60" id=""></textarea>
          
            
-            <label for="categoria">Selecciona una categoría:</label>
-            <select name="id_categoria" id="categoria" class="form-select" onchange="this.form.submit()">
+            <!-- <label for="categoria">Selecciona una categoría:</label> -->
+            <select name="id_categoria" id="categoria" class="form-select">
             
               <?php foreach ($resultadoFinal as $categoria) { ?>
                 <option value="<?php echo $categoria->id; ?>" >
@@ -96,13 +104,7 @@ $stmt->close();
             
            
             
-            <div class="descripcion">
-                <p>Descripcion de noticia</p>
-                <textarea 
-                type="text" rows="30"  name="descripcion" placeholder="Description" >
-                </textarea>
-
-            </div>
+          
 
             
              <div class="file">
@@ -156,22 +158,16 @@ if ($hidden == 1) {
         $mensaje .= "Por favor ingrese el texto de la noticia.<br>";
     }
     
-    //    Verificar si se ha subido un archivo
+    //Verificar si se ha subido un archivo
     // Comprobar si se ha subido el archivo
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
         // Obtener información del archivo
         $archivo = $_FILES['imagen'];
         $nombreArchivo = basename($archivo['name']);
-        $rutaDirectorio = 'uploads/'; // Directorio donde se guardarán las imágenes
+        $rutaDirectorio = '../uploads/'; // Directorio donde se guardarán las imágenes
         $rutaCompleta = $rutaDirectorio . $nombreArchivo;
-    }
 
-    // Asegúrate de que el directorio existe
-    if (!is_dir($rutaDirectorio)) {
-        mkdir($rutaDirectorio, 0777, true); // Crea el directorio si no existe
-    }
-
-    // Mover el archivo subido a la carpeta 'uploads'
+            // Mover el archivo subido a la carpeta 'uploads'
     if (move_uploaded_file($archivo['tmp_name'], $rutaCompleta)) {
         echo "//Archivo subido correctamente";
         $rutaFinal = $rutaCompleta; 
@@ -182,6 +178,15 @@ if ($hidden == 1) {
         echo "error al cargar la imagen";
         exit();
     }
+    }
+
+    // // Asegúrate de que el directorio existe
+    // if (!is_dir($rutaDirectorio)) {
+    //     mkdir($rutaDirectorio, 0777, true); // Crea el directorio si no existe
+    // }
+
+    
+   
 
     if ($error == 0){
         $sql = "INSERT INTO noticias (titulo, descripcion, texto, imagen,id_categoria ) VALUES (?, ?, ?, ?,?)";

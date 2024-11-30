@@ -2,16 +2,18 @@
 footer {
     background-color: #333; /* Fondo oscuro */
     color: #fff; /* Texto blanco */
-    padding: 5px 5px; /* Espaciado */
+    /* padding: 5px 5px; Espaciado */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; /* Adaptable para pantallas pequeñas */
     font-family: 'Arial', sans-serif;
+    margin-top: 100px;
   
   }
   
   footer .footer-section {
-    margin-bottom: 10px;
+    margin-top: 5px; 
+     
     width: 30%; /* Anchura ajustada para organizar las secciones en columnas */
    
     

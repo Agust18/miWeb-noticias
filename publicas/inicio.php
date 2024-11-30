@@ -19,22 +19,59 @@ $stmt->close();
 ?>
 
 <?php
-// $filtro =  isset($_POST["filtro"]) ? $_POST ["filtro"] : "";
-// $id_categoria =  isset($_POST["id_categoria"]) ? $_POST ["id_categoria"] : 0;
 
-// if ($id_categoria == 0 || $filtro == 0){
-//     $sql = ("SELECT * FROM NOTICIAS");
-//     $stmt = $conx->prepare($sql);
-//     $stmt->execute();
-//     $resultado = $stmt->get_result();
-//     $resultadoFinal = [];
-//     while ($fila = $resultado->fetch_object()){
-//         $resultadoFinal[] = $fila; 
-//     }
-//     $stmt->close();
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id_categoria']) && $_POST['id_categoria'] != 0) {
+    $id_categoria = intval($_POST['id_categoria']);
 
-    
-// } else{
+    // Consulta para filtrar noticias por la categoría seleccionada
+    $sql = "SELECT * FROM NOTICIAS WHERE id_categoria = ? order by id desc";
+    $stmt = $conx->prepare($sql);
+    $stmt->bind_param("i", $id_categoria);
+}elseif (isset($_GET['search']) && !empty($_GET['search'])) {
+    $search = $_GET['search'];
+    $search_param = "%" . $search . "%";
+    $sql = "SELECT * FROM NOTICIAS WHERE titulo LIKE ? ORDER BY id DESC";
+    $stmt = $conx->prepare($sql);
+    $stmt->bind_param("s", $search_param);
+} else{
+    // Consulta para obtener todas las noticias si no se seleccionó una categoría
+    $sql = "SELECT * FROM NOTICIAS order by id desc";
+    $stmt = $conx->prepare($sql);
+} 
+
+
+
+$stmt->execute();
+$resultado = $stmt->get_result();
+$FinalResultado = [];
+while ($fila = $resultado->fetch_object()){
+    $FinalResultado[] = $fila;
+}
+$stmt->close();
+
+
+
+
+ 
+
+ 
+// $sql = ("SELECT * FROM NOTICIAS");
+// $stmt = $conx->prepare($sql);
+// $stmt->execute();
+// $resultado = $stmt->get_result();
+// $FinalResultado = [];
+// while ($fila = $resultado->fetch_object()){
+//     $FinalResultado[] = $fila; 
+// }
+// $stmt->close();
+
+
+
+
+
+
+
+// if(isset($_POST['id_categoria']) && $_POST['id_categoria'] != 0){
 //     $sql = "SELECT N.id,N.titulo,N.imagen FROM NOTICIAS N INNER JOIN CATEGORIAS C ON (N.ID_CATEGORIA=C.ID) WHERE C.ID = ?";
 //     $stmt = $conx->prepare($sql);
 //     $stmt->bind_param( "i", $id_categoria);
@@ -46,14 +83,13 @@ $stmt->close();
 
 //     }
 //     $stmt->close();
-     
-            
+
 // }
+
+
+    
+
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,12 +105,18 @@ $stmt->close();
 
 <body>
 <header>
-    <h1>what happens?</h1>
+    <h1>ENTERATE!</h1>
     <div>
        <nav class="nav-links">
             <ul>
                 <li><a href="inicio.php">Inicio</a></li>
-                <li><a href="categorias.php">Categorias</a></li>
+
+                <form method="GET" action="" class="buscador">
+                    <input type="text" name="search" placeholder="search">
+                    <input type="submit" value="buscar">
+                </form>
+
+                             
                 <li><a href="../privadas/agregarNoticia.php">agregarNoticia</a></li>
                 <?php
                 if (isset($_SESSION["id"])|| !empty($_SESSION["id"])){ ?>
@@ -97,10 +139,10 @@ $stmt->close();
         <form action="" method="POST">
             <label for="categoria">Filtrar categoria:</label>
             <select name="id_categoria" id="categoria" class="form-select" onchange="this.form.submit()"> //captura 
-              <option value="0">selecciona</option>
-              <?php foreach ($resultadoFinal as $categoria) { ?>
+                <option value="0">seleccionar</option>
+                    <?php foreach ($resultadoFinal as $categoria) { ?>
                 <option value="<?php echo $categoria->id; ?>" >
-                  <?php echo $categoria->categoria;?>
+                    <?php echo $categoria->categoria;?>
                 </option>
               <?php } ?>
             </select>
@@ -113,59 +155,21 @@ $stmt->close();
     
 
 
-<div class="contenedor">
+<div class="contenedor"> 
+    <?php foreach ($FinalResultado as $noticia) { ?>
         <div class="titulo1">
-        <h3>titulo1</h3>
-        <img src="../uploads/demon_slayer_obanai_iguro_with_a_zigzag_sword_with_background_of_purple_hd_anime-1920x1080.jpg" alt="Imagen 1">
-        <a href="detalles.php">ver mas</a>
-    </div>
-    <div class="titulo2">
-        <h3>titulo2</h3>
-        <img src="../uploads/thumb-1920-1020808.jpg" alt="Imagen 2">
-        <a href="">ver mas</a>
-    </div>
-    <div class="titulo3">
-        <h3>titulo3</h3>
-        <img src="../uploads/descarga (2).jfif" alt="Imagen 2">
-        <a href="">ver mas</a>
-    </div>
+            <h3><?php echo $noticia->titulo; ?></h3>
+            <img src="<?php echo $noticia->imagen ?>">
+             <!-- Aquí pasamos el ID de la noticia en el enlace -->
+            <a href="detalles.php?id=<?php echo $noticia->id; ?>">Ver más</a>
+        </div>
+    <?php
+    } ?>
 </div>
+      
+  
 
-<div class="contenedor2">
-    <div class="titulo4">
-        <h3>titulo4</h3>
-        <img src="../uploads/descarga (3).jfif" alt="Imagen 1">
-        <a href="http://">ver mas</a>
-    </div>
-    <div class="titulo5">
-        <h3>titulo5</h3>
-        <img src="../uploads/⚠︎︎ᴍɪᴋᴇʏ.jfif" alt="Imagen 2">
-        <a href="http://">ver mas</a>
-    </div>
-    <div class="titulo6">
-        <h3>titulo6</h3>
-        <img src="" alt="Imagen 2">
-        <a href="http://">ver mas</a>
-    </div>
-</div>
 
-<div class="contenedor3">
-    <div class="titulo7">
-        <h3>titulo7</h3>
-        <img src="" alt="Imagen 1">
-        <a href="http://">ver mas</a>
-    </div>
-    <div class="titulo8">
-        <h3>titulo8</h3>
-        <img src="" alt="Imagen 2">
-        <a href="http://">ver mas</a>
-    </div>
-    <div class="titulo9">
-        <h3>titulo9</h3>
-        <img src="" alt="Imagen 2">
-        <a href="">ver mas</a>
-    </div>
-</div>
 
 <footer>
     <div class="footer-section">
@@ -188,6 +192,6 @@ $stmt->close();
 </body>
 </html>
 
-<?php
+
 
 

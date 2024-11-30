@@ -18,7 +18,7 @@ require_once("../db/db.php");
 //TRABAJAMOS CON STATEMENT SIEMPRE
 // paso1 : preparar la consulta con stmt 
 //stmt para evitar inyecciones de consultas
-$stmt = $conx->prepare("SELECT * FROM categorias ");
+$stmt = $conx->prepare("SELECT * FROM noticias N inner join categorias C on (N.id_categoria=C.id)");
 
 // paso 1.5
 //enteros = i
@@ -68,7 +68,7 @@ $stmt->close();
                 <li><a href="listado.php">usuarios</a></li>
                 <li><a href="listadoNoticias.php">Noticias</a></li>
                 <li><a href="listadoCategorias.php">categorias</a></li>
-                <li><a href="editarCategorias.php">agregar Categoria</a></li>
+                <li><a href="AggAdmiNoticias.php">Agregar Noticias </a></li>
                
 
             </ul> 
@@ -79,14 +79,18 @@ $stmt->close();
 
 <body>
     <div class="listadosub">
-         <h2>LISTADO DE CATEGORIAS</h2>
+         <h2>LISTADO DE NOTICIAS</h2>
     </div>
     <div class="table">
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Titulo</th>
                     <th>Categoria</th>
+                    <th>Texto</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
                   
                    
                 </tr>
@@ -96,12 +100,21 @@ $stmt->close();
                 foreach ($nuestroResultado as $fila) { ?>
                 <tr>
                     <td><?php echo $fila->id ?></td>
+                    <td><?php echo $fila->titulo ?></td>
                     <td><?php echo $fila->categoria ?></td>
+                    <td><?php echo $fila->texto ?></td>
+                    <td><?php echo $fila->descripcion ?></td>
+                    <div class="listadoNoticiasImagen">
+                    <td><img class="listado-img" src="<?php echo $fila->imagen ?>" /></td>
+
+                    </div>
+                   
+                  
                     
                     
                     <td>
-                        <a href="editarCategorias.php?id=<?php echo $fila->id ?>">Editar<a/> 
-                        <form action="../controles/eliminarCategoria.php" method="POST">
+                        <a href="AggAdmiNoticias.php?id=<?php echo $fila->id ?>">Editar</a>
+                        <form action="../controles/eliminarNoticias.php" method="POST">
                             <input type="hidden" value="<?php echo $fila->id ?>" name="id">
                             <input type="submit" value="eliminar">
                         </form>

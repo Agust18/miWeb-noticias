@@ -10,30 +10,35 @@ body {
 
 
 /* El contenedor principal que contiene ambos divs hijos */
-.contenedor,.contenedor2,.contenedor3 {
+.contenedor {
     display: flex; /* Utilizamos Flexbox para alinear los divs horizontalmente */
     justify-content: space-between; /* Distribuye espacio entre los divs, uno a cada lado */
-   
+    flex-wrap: wrap;
 }
 
 /* Estilos comunes para los divs "titulo1" y "titulo2" */
-.titulo1, .titulo2 , .titulo3,.titulo4,.titulo5,.titulo6,.titulo7,.titulo8,.titulo9{
+.titulo1{
     flex: 1; /* los divs ocuparán el mismo ancho en el contenedor */
     background-color: #f0f0f0; /* Color de fondo para hacer más visible el div */
-    margin: 0 10px; /* Agregamos un margen de 10px a los lados, entre los divs */
+    margin: 10px 10px; /* Agregamos un margen de 10px a los lados, entre los divs */
     padding: 20px; /* Espaciado interno para el contenido de los divs */
-    border: 1px solid #ccc; /* Borde para hacer más claro el límite de cada div */
+    /* border: 1px radius #ccc; Borde para hacer más claro el límite de cada div */
     text-align: center; /* Centramos el texto y las imágenes dentro de los divs */
-    display: flex;
+    display: flex; /* Utilizamos Flexbox para alinear los divs horizontalmente */
     flex-direction: column; /* coloca los items en verticalmente u horizontal    */
     justify-content: center; /* centra los item dependiento si es row o columnt  */
     align-items: center; /* alinea verticalmente  */
+    display: flex; /* Utilizamos Flexbox para alinear los divs horizontalmente */
+    justify-content: space-between; /* Distribuye espacio entre los divs, uno a cada lado */
+    border-radius: 4px;
+
     
 }
 
 /* Estilo para las imágenes dentro de los divs */
 img {
     max-width: 100px; /* Limitamos el ancho máximo de la imagen para que no sea demasiado grande */
+    
 }
 
 /*
@@ -104,5 +109,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+
 
 

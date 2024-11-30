@@ -66,7 +66,7 @@ $stmt->close();
        <nav class="nav-links">
             <ul>
                 <li><a href="listado.php">usuarios</a></li>
-                <li><a href="">Noticias</a></li>
+                <li><a href="listadoNoticias.php">Noticias</a></li>
                 <li><a href="listadoCategorias.php">categorias</a></li>
                 <li><a href="editarUser.php">agregar Usuario</a></li>
                

@@ -5,40 +5,6 @@ body{
     font-family: Arial, sans-serif; /* Establece la fuente del documento */
 }
 
-.contedor{
-    display: flex; /* Utilizamos Flexbox para alinear los divs horizontalmente */
-    justify-content: space-between; /* Distribuye espacio entre los divs, uno a cada lado */
-}
-
-
-.titulo,.imagen,.texto{
-    flex: 1; /* los divs ocuparán el mismo ancho en el contenedor */
-    background-color: #f0f0f0; /* Color de fondo para hacer más visible el div */
-    margin: 0 10px; /* Agregamos un margen de 10px a los lados, entre los divs */
-    padding: 20px; /* Espaciado interno para el contenido de los divs */
-    border: 1px solid #ccc; /* Borde para hacer más claro el límite de cada div */
-    text-align: center; /* Centramos el texto y las imágenes dentro de los divs */
-}
-
-.titulod {
-    font-size: 2em;
-    font-weight: bold;
-    color: #333; 
-    text-transform: uppercase;
-}
-
-.imagen{
-    max-width: auto; /*Ancho del div */
-    max-height: auto; /* Alto del div*/
-    border-radius: 10px;
-}
-
-.imagen img {
-    
-    width: 25%; /* La imagen se ajusta al 100% del ancho del div */
-    height: 50%; /* La altura se ajusta automáticamente */
-    border-radius: 10px; /*bordes redondeados*/
-}
 
 .relacionadas{
     text-align: center;
@@ -47,8 +13,134 @@ body{
     color:white;
 }
 
-/* .texto{
-    border-radius: px;
-} */
+/* Estilos para el contenedor principal */
+.contenedor {
+    max-width: 800px; /* Limita el ancho máximo del contenedor a 800px */
+    margin: 20px auto; /* Centra el contenedor horizontalmente y agrega un margen de 20px arriba y abajo */
+    padding: 30px; /* Agrega un padding interno de 30px en todos los lados */
+    background-color: #ffffff; /* Establece el color de fondo a blanco */
+    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra sutil para darle profundidad */
+}
 
 
+
+/* Estilos para el título de cada noticia */
+.titulo {
+    margin-bottom: 30px; /* Agrega un margen inferior de 20px para separar los títulos de las noticias */
+    text-align: center;
+}
+
+.titulo h3 {
+    font-size: 25px; /* Establece el tamaño de fuente del título a 24px */
+    color: #333333; /* Establece el color del texto del título a un gris oscuro */
+    margin-bottom: 40px; /* Agrega un margen inferior de 15px para separar el título del contenido */
+}
+
+/* Estilos para la imagen de la noticia */
+.titulo img {
+    width: 100%; /* Hace que la imagen ocupe el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen al ajustar su altura automáticamente */
+    margin-bottom: 10px; /* Agrega un margen inferior de 10px para separar la imagen del texto */
+    border-radius: 5px; /* Redondea las esquinas de la imagen con un radio de 5px */
+    object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin distorsionarse */
+}
+
+/* Estilos para los párrafos de descripción y texto */
+.titulo p {
+    font-size: 18px; /* Establece el tamaño de fuente de los párrafos a 18px */
+    color: #333333; /* Establece el color del texto de los párrafos a un gris oscuro */
+    line-height: 1.5; /* Establece el interlineado a 1.5 para mejorar la legibilidad */
+    margin-bottom: 15px; /* Agrega un margen inferior de 15px para separar los párrafos entre sí */
+    text-align: center;
+    /* overflow: scroll; */
+}
+
+
+/* Contenedor de noticias relacionadas */
+.galeria-relacionadas {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente línea automáticamente */
+}
+
+/* Tarjeta de cada noticia */
+.noticia-relacionada {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 150px; /* Ancho fijo para cada tarjeta */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 270px;
+    text-align: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.noticia-relacionada:hover {
+    transform: translateY(-3px);
+}
+
+/* Imagen ajustada sin perder calidad */
+.img-relacion img {
+    width: 100%;
+    height: auto;
+    border-radius:3px;
+    max-height: 150px;
+    object-fit: cover; /* Asegura que las imágenes se mantengan proporcionales */
+}
+
+/* Título con control de desbordamiento */
+/* Título con control de desbordamiento */
+.titulo h5 {
+    font-size: 0.5em;
+    color: #333;
+    margin: 8px 0;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+
+/* Descripción breve */
+.noticia-relacionada p {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 10px;
+    height: 50px; /* Ajusta la altura de la descripción */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Enlace de "Leer más" */
+.noticia-relacionada a {
+    color: #007bff;
+    font-size: 0.4em;
+    text-decoration: none;
+    margin-top: auto; /* Alinea "Leer más" al fondo de la tarjeta */
+}
+
+.noticia-relacionada a:hover {
+    text-decoration: underline;
+}
+
+.relacionadas p{
+    font-family: 'Roboto', sans-serif; /* Fuente moderna y elegante */
+    font-size: 1.1em; /* Tamaño de fuente ligeramente mayor para comodidad de lectura */
+    color: floralwhite; /* Color de texto oscuro para una buena legibilidad */
+    line-height: 1.6; /* Mayor altura de línea para mejorar la legibilidad */
+    margin: 12px 0; /* Espaciado vertical entre párrafos */
+    padding: 0 15px; /* Añade espacio horizontal dentro del párrafo */
+    text-align: center; /* Alineación justificada */
+}
+
+/* Incluir Google Fonts para usar 'Roboto' */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
