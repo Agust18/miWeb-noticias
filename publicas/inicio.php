@@ -171,7 +171,7 @@ $stmt->close();
 
 
 
-<footer>
+<!-- <footer>
     <div class="footer-section">
         <ul>
         <li><a href="/about-us">Acerca de Nosotros</a></li>
@@ -187,7 +187,7 @@ $stmt->close();
             <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
         </ul>
     </div>
-</footer>
+</footer> -->
 
 </body>
 </html>
