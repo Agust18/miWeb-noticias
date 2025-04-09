@@ -13,15 +13,16 @@ while ($fila = $resultadoCategorias->fetch_object()) {
 }
 
 // Verifica si se recibe el id de la noticia para editar, o 0 si es una nueva noticia
-$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+$id = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
 var_dump($id);
 if ($id != 0) {
     // Consulta para obtener la noticia por su ID
-    $sql = "select * FROM noticias n inner join categorias c  on (n.id_categoria=c.id)  WHERE id = ?";
+    $sql = "select * FROM noticias n inner join categorias c  on (n.id_categoria=c.id)  WHERE c.id = ?";
     $stmt = $conx->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $resultadoStmt = $stmt->get_result();
+    
     $resultado = $resultadoStmt->fetch_object();
 
     // Se obtienen los datos de la noticia para mostrarlos en el formulario de edición
